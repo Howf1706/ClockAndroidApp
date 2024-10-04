@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_clock"
+        android:icon="@drawable/baseline_watch_later_24"
+        android:title="Clock" />
+
+    <item
+        android:id="@+id/bottom_timer"
+        android:icon="@drawable/baseline_timer_24"
+        android:title="Timer" />
+
+    <item
+        android:id="@+id/bottom_alarm"
+        android:icon="@drawable/baseline_access_alarm_24"
+        android:title="Alarm" />
+
+    <item
+        android:id="@+id/bottom_stopwatch"
+        android:icon="@drawable/baseline_hourglass_empty_24"
+        android:title="Stopwatch" />
+
+</menu>
