@@ -116,6 +116,7 @@ public class TimerActivity2 extends AppCompatActivity {
                 return;
             }
         }
+
         createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "2")
                 .setSmallIcon(R.drawable.baseline_access_alarm_24)
