@@ -1,16 +1,9 @@
 package com.example.clockdraw;
 
-import android.annotation.SuppressLint;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -22,7 +15,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -110,7 +102,6 @@ public class TimerActivity2 extends AppCompatActivity {
         TimerRunning = false;
         btnPause_Con.setText("Resume");
     }
-
     private void updateCountDownText() {
         int hours = (int) (mTimeLeftMillis / 1000 / 3600);
         int minutes = (int) ((mTimeLeftMillis / 1000) % 3600) / 60;
