@@ -69,11 +69,8 @@ public class ReminderActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Please select date and time", Toast.LENGTH_SHORT).show();
                     } else {
                         processinsert(title, date, time);
-
                     }
                 }
-
-
             }
         });
     }
@@ -116,8 +113,7 @@ public class ReminderActivity extends AppCompatActivity {
 
     public String FormatTime(int hour, int minute) {                                                //this method converts the time into 12hr farmat and assigns am or pm
 
-        String time;
-        time = "";
+        String time = "";
         String formattedMinute;
 
         if (minute / 10 == 0) {
@@ -144,10 +140,9 @@ public class ReminderActivity extends AppCompatActivity {
 
 
     private void setAlarm(String text, String date, String time) {
-        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);                   //assigining alaram manager object to set alaram
-
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getApplicationContext(), AlarmBroadcast.class);
-        intent.putExtra("event", text);                                                       //sending data to alarm class to create channel and notification
+        intent.putExtra("event", text);
         intent.putExtra("time", date);
         intent.putExtra("date", time);
 
@@ -163,7 +158,7 @@ public class ReminderActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Intent intentBack = new Intent(getApplicationContext(), MainActivity.class);                //this intent will be called once the setting alaram is completes
+        Intent intentBack = new Intent(getApplicationContext(), AlarmActivity.class);                //this intent will be called once the setting alaram is completes
         intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intentBack);                                                                  //navigates from adding reminder activity ot mainactivity
 

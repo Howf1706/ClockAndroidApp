@@ -7,6 +7,9 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.RemoteViews;
@@ -38,12 +41,11 @@ public class AlarmBroadcast extends BroadcastReceiver {
         contentView.setOnClickPendingIntent(R.id.snoozeButton, pendingSwitchIntent);
         contentView.setTextViewText(R.id.message, text);
         contentView.setTextViewText(R.id.date, date);
+        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         mBuilder.setSmallIcon(R.drawable.alaram);
-        mBuilder.setAutoCancel(true);
         mBuilder.setOngoing(true);
-        mBuilder.setAutoCancel(true);
         mBuilder.setPriority(Notification.PRIORITY_HIGH);
-        mBuilder.setOnlyAlertOnce(true);
+        mBuilder.setSound(soundUri);
         mBuilder.build().flags = Notification.FLAG_NO_CLEAR | Notification.PRIORITY_HIGH;
         mBuilder.setContent(contentView);
         mBuilder.setContentIntent(pendingIntent);
@@ -58,8 +60,8 @@ public class AlarmBroadcast extends BroadcastReceiver {
         }
 
         Notification notification = mBuilder.build();
+        notification.flags |= Notification.FLAG_INSISTENT;
         notificationManager.notify(1, notification);
-
 
     }
 }
