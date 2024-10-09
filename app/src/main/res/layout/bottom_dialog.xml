@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_background"
+    android:theme="@style/AppTheme">
+
+    <TextView
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:clickable="true"
+        android:focusable="true"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/light_blue_600"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        />
+
+    <TextView
+        android:id="@+id/doneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:clickable="true"
+        android:focusable="true"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/light_blue_600"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="100dp"
+        />
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/gray_600"
+
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toBottomOf="@id/timePicker"
+        >
+    <LinearLayout
+        android:id="@+id/optionBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/timePicker">
+
+        <RelativeLayout
+            android:id="@+id/nameSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <EditText
+                android:id="@+id/alarmName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Alarm Name"
+                android:textColorHint="@color/gray_400"
+                android:textSize="23sp"
+                android:layout_alignParentStart="true"
+                android:inputType="text"
+                android:background="@android:color/transparent"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <RelativeLayout
+            android:id="@+id/soundSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            >
+
+            <TextView
+                android:id="@+id/soundText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sound"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:layout_alignParentStart="true"
+
+                />
+            <TextView
+                android:id="@+id/currentSound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not given"
+                android:textSize="20sp"
+                android:textColor="@color/gray_400"
+                android:layout_below="@id/soundText"
+                android:layout_alignParentStart="true"
+                />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_arrow_forward_ios_24"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                />
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
