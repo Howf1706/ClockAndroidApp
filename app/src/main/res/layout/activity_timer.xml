@@ -45,9 +45,9 @@
         android:id="@+id/NP_minute"
         android:layout_width="75dp"
         android:layout_height="238dp"
-        android:layout_marginStart="172dp"
         android:layout_marginTop="180dp"
         android:theme="@style/AppTheme.Picker"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
