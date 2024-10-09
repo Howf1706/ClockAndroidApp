@@ -1,6 +1,10 @@
 package com.example.clockdraw;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -9,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -50,6 +56,7 @@ public class TimerActivity2 extends AppCompatActivity {
             @Override
             public void onFinish() {
                 TimerRunning = false;
+                showNotification();
                 finish();
             }
         }.start();
@@ -83,6 +90,7 @@ public class TimerActivity2 extends AppCompatActivity {
             public void onFinish()
             {
                 TimerRunning = false;
+                showNotification();
                 finish();
             }
         }.start();
@@ -94,12 +102,39 @@ public class TimerActivity2 extends AppCompatActivity {
         TimerRunning = false;
         btnPause_Con.setText("Resume");
     }
-
     private void updateCountDownText() {
         int hours = (int) (mTimeLeftMillis / 1000 / 3600);
         int minutes = (int) ((mTimeLeftMillis / 1000) % 3600) / 60;
         int seconds = (int) ((mTimeLeftMillis / 1000) % 60);
         String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d:%02d", hours, minutes, seconds);
         text_display.setText(timeLeftFormatted);
+    }
+    private void showNotification(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1);
+                return;
+            }
+        }
+
+        createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "2")
+                .setSmallIcon(R.drawable.baseline_access_alarm_24)
+                .setContentTitle("Time up!!!")
+                .setContentText("The countdown timer is over");
+                NotificationManager notificationManger = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManger.notify(0,builder.build());
+    }
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String CHANNEL_ID = "2";
+            CharSequence name = "Timer Notifications";
+            String description = "Notifications for Timer Completion";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

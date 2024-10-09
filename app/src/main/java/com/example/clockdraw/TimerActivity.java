@@ -72,7 +72,6 @@ public class TimerActivity extends AppCompatActivity {
         num_second.setMaxValue(59);
         num_second.setMinValue(1);
         num_second.setValue(1);
-
         btnSet = findViewById(R.id.btnSet);
         btnSet.setOnClickListener( new View.OnClickListener() {
             @Override
