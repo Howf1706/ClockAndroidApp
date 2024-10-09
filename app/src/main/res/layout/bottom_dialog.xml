@@ -12,6 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
+        android:clickable="true"
+        android:focusable="true"
         android:textStyle="bold"
         android:textSize="24sp"
         android:textColor="@color/light_blue_600"
@@ -26,6 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
+        android:clickable="true"
+        android:focusable="true"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/light_blue_600"
@@ -59,7 +63,7 @@
         android:id="@+id/optionBoard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:padding="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:orientation="vertical"
@@ -94,6 +98,8 @@
             android:id="@+id/soundSetting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             >
 
             <TextView
@@ -126,24 +132,7 @@
                 />
 
         </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
 
-        <RelativeLayout
-            android:id="@+id/recurringSetting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <CheckBox
-                android:id="@+id/fragment_createalarm_checkMon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/custom_checkbox"
-                android:text="Mon" />
-
-        </RelativeLayout>
 
 
     </LinearLayout>
